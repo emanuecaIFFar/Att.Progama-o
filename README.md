@@ -1,3 +1,5 @@
+README - Atividades de Programação
+
 Sobre este diretório
 
 Este diretório contém uma coleção de atividades de programação realizadas durante meus estudos na escola. O objetivo principal é armazenar e organizar meus exercícios e projetos para futuras consultas e revisões.

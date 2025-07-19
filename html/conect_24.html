@@ -1,1 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conect24 - Sua rede social</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom CSS for elements that need more specific styling */
+        .orkut-blue {
+            background-color: #3399ff;
+        }
+        .orkut-pink {
+            background-color: #ff69b4;
+        }
+        .orkut-green {
+            background-color: #33cc33;
+        }
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #3399ff;
+        }
+        .community-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff69b4;
+        }
+        .nav-link:hover {
+            background-color: rgba(255,255,255,0.2);
+            border-radius: 5px;
+        }
+        .btn-orkut:hover {
+            transform: scale(1.05);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #3399ff 0%, #ff69b4 50%, #33cc33 100%);
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- Navigation Component -->
+    <nav class="orkut-blue text-white shadow-lg fixed top-0 w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fas fa-users text-2xl"></i>
+                <a href="index.html" class="text-2xl font-bold">Conect24</a>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="index.html" class="nav-link px-3 py-2 flex items-center">
+                    <i class="fas fa-home mr-2"></i> Início
+                </a>
+                <a href="perfil.html" class="nav-link px-3 py-2 flex items-center">
+                    <i class="fas fa-user mr-2"></i> Perfil
+                </a>
+                <a href="cadastro_comunidade.html" class="nav-link px-3 py-2 flex items-center">
+                    <i class="fas fa-users mr-2"></i> Comunidades
+                </a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <i class="fas fa-bell text-xl cursor-pointer"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">3</span>
+                </div>
+                <div class="relative">
+                    <i class="fas fa-envelope text-xl cursor-pointer"></i>
+                    <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">5</span>
+                </div>
+                <div class="hidden md:block">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="w-10 h-10 rounded-full cursor-pointer border-2 border-white">
+                </div>
+                <button class="md:hidden text-xl" id="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-blue-700 px-4 py-2" id="mobile-menu">
+            <a href="index.html" class="block px-3 py-2 text-white hover:bg-blue-600 rounded mb-1">
+                <i class="fas fa-home mr-2"></i> Início
+            </a>
+            <a href="perfil.html" class="block px-3 py-2 text-white hover:bg-blue-600 rounded mb-1">
+                <i class="fas fa-user mr-2"></i> Perfil
+            </a>
+            <a href="cadastro_comunidade.html" class="block px-3 py-2 text-white hover:bg-blue-600 rounded">
+                <i class="fas fa-users mr-2"></i> Comunidades
+            </a>
+        </div>
+    </nav>
 
+    <!-- Main Content Area -->
+    <div class="container mx-auto px-4 pt-24 pb-10">
+        <!-- Dynamic Content Section - This will change based on the page -->
+        <div id="dynamic-content" class="flex flex-col md:flex-row gap-6">
+            <!-- Left Sidebar (Visible on index and profile pages) -->
+            <div id="left-sidebar" class="w-full md:w-1/4 lg:w-1/5 hidden md:block">
+                <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                    <div class="flex flex-col items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-pic mb-4">
+                        <h3 class="font-bold text-lg">João Silva</h3>
+                        <p class="text-gray-600 text-sm">São Paulo, SP</p>
+                        <div class="flex space-x-2 mt-3">
+                            <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">Amigos: 245</span>
+                            <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Comunidades: 12</span>
+                        </div>
+                    </div>
+                    <div class="mt-4">
+                        <a href="perfil.html" class="block w-full bg-blue-500 hover:bg-blue-600 text-white text-center py-2 rounded-lg font-medium btn-orkut transition-all">
+                            <i class="fas fa-user-edit mr-2"></i> Ver Perfil
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <i class="fas fa-users mr-2 text-pink-500"></i> Minhas Comunidades
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+                            <img src="https://picsum.photos/seed/community1/200" alt="Community" class="community-icon">
+                            <div>
+                                <h4 class="font-medium">Programadores</h4>
+                                <p class="text-gray-500 text-sm">12.5k membros</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+                            <img src="https://picsum.photos/seed/community2/200" alt="Community" class="community-icon">
+                            <div>
+                                <h4 class="font-medium">Música</h4>
+                                <p class="text-gray-500 text-sm">8.2k membros</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-lg cursor-pointer">
+                            <img src="https://picsum.photos/seed/community3/200" alt="Community" class="community-icon">
+                            <div>
+                                <h4 class="font-medium">Viagens</h4>
+                                <p class="text-gray-500 text-sm">15.7k membros</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <a href="cadastro_comunidade.html" class="block w-full bg-pink-500 hover:bg-pink-600 text-white text-center py-2 rounded-lg font-medium btn-orkut transition-all">
+                            <i class="fas fa-plus mr-2"></i> Criar Comunidade
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content (Changes based on page) -->
+            <div id="main-content" class="w-full md:w-2/4 lg:w-3/5">
+                <!-- This div will be replaced with the appropriate content based on the page -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-2xl font-bold mb-6 text-center gradient-text bg-clip-text text-transparent bg-gradient-to-r from-blue-500 via-pink-500 to-green-500">
+                        Bem-vindo ao Conect24!
+                    </h2>
+                    <p class="text-gray-700 mb-6 text-center">
+                        Reconecte-se com velhos amigos e faça novas amizades na nossa rede social inspirada no clássico Orkut.
+                    </p>
+                    <div class="flex flex-col md:flex-row justify-center gap-4">
+                        <a href="login.html" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg text-center btn-orkut transition-all">
+                            <i class="fas fa-sign-in-alt mr-2"></i> Fazer Login
+                        </a>
+                        <a href="cadastro.html" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg text-center btn-orkut transition-all">
+                            <i class="fas fa-user-plus mr-2"></i> Criar Conta
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Sidebar (Visible on index page) -->
+            <div id="right-sidebar" class="w-full md:w-1/4 lg:w-1/5 hidden md:block">
+                <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <i class="fas fa-bell mr-2 text-yellow-500"></i> Notificações
+                    </h3>
+                    <div class="space-y-3 max-h-96 overflow-y-auto scrollbar-hide">
+                        <div class="p-3 bg-blue-50 rounded-lg">
+                            <p class="text-sm"><span class="font-medium">Maria</span> comentou no seu post</p>
+                            <p class="text-xs text-gray-500">2 horas atrás</p>
+                        </div>
+                        <div class="p-3 bg-pink-50 rounded-lg">
+                            <p class="text-sm"><span class="font-medium">Carlos</span> adicionou você como amigo</p>
+                            <p class="text-xs text-gray-500">Ontem</p>
+                        </div>
+                        <div class="p-3 bg-green-50 rounded-lg">
+                            <p class="text-sm"><span class="font-medium">Programadores</span> tem um novo membro</p>
+                            <p class="text-xs text-gray-500">2 dias atrás</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-md p-4">
+                    <h3 class="font-bold text-lg mb-3 flex items-center">
+                        <i class="fas fa-calendar-alt mr-2 text-purple-500"></i> Eventos
+                    </h3>
+                    <div class="space-y-3">
+                        <div class="p-3 border rounded-lg">
+                            <p class="text-sm font-medium">Encontro de Programadores</p>
+                            <p class="text-xs text-gray-500">15/06 - 19:00</p>
+                        </div>
+                        <div class="p-3 border rounded-lg">
+                            <p class="text-sm font-medium">Festa de Aniversário</p>
+                            <p class="text-xs text-gray-500">22/06 - 21:00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="orkut-blue text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h2 class="text-2xl font-bold flex items-center">
+                        <i class="fas fa-users mr-2"></i> Conect24
+                    </h2>
+                    <p class="text-sm mt-1">© 2023 Todos os direitos reservados</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-blue-200 transition-colors">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="hover:text-blue-200 transition-colors">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="hover:text-blue-200 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="hover:text-blue-200 transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-blue-400 mt-6 pt-6 flex flex-col md:flex-row justify-between">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="font-medium mb-2">Links Úteis</h3>
+                    <ul class="space-y-1">
+                        <li><a href="#" class="text-sm hover:underline">Termos de Serviço</a></li>
+                        <li><a href="#" class="text-sm hover:underline">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-sm hover:underline">Ajuda</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-medium mb-2">Contato</h3>
+                    <ul class="space-y-1">
+                        <li class="text-sm flex items-center"><i class="fas fa-envelope mr-2"></i> contato@conect24.com</li>
+                        <li class="text-sm flex items-center"><i class="fas fa-phone mr-2"></i> (11) 1234-5678</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Page Templates (hidden by default) -->
+    
+    <!-- Login Template -->
+    <template id="login-template">
+        <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center text-blue-500">
+                <i class="fas fa-sign-in-alt mr-2"></i> Login
+            </h2>
+            <form>
+                <div class="mb-4">
+                    <label for="login-email" class="block text-gray-700 font-medium mb-2">E-mail</label>
+                    <input type="email" id="login-email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="seu@email.com" required>
+                </div>
+                <div class="mb-6">
+                    <label for="login-password" class="block text-gray-700 font-medium mb-2">Senha</label>
+                    <input type="password" id="login-password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" required>
+                </div>
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember-me" class="h-4 w-4 text-blue-500 focus:ring-blue-500 border-gray-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-700">Lembrar de mim</label>
+                    </div>
+                    <a href="#" class="text-sm text-blue-500 hover:underline">Esqueceu a senha?</a>
+                </div>
+                <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg btn-orkut transition-all">
+                    Entrar
+                </button>
+                <div class="mt-4 text-center">
+                    <p class="text-sm text-gray-600">Não tem uma conta? <a href="cadastro.html" class="text-blue-500 hover:underline">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
+    </template>
+    
+    <!-- Registration Template -->
+    <template id="register-template">
+        <div class="bg-white rounded-lg shadow-md p-8 max-w-md mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center text-green-500">
+                <i class="fas fa-user-plus mr-2"></i> Cadastro
+            </h2>
+            <form>
+                <div class="mb-4">
+                    <label for="register-name" class="block text-gray-700 font-medium mb-2">Nome Completo</label>
+                    <input type="text" id="register-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Seu nome" required>
+                </div>
+                <div class="mb-4">
+                    <label for="register-email" class="block text-gray-700 font-medium mb-2">E-mail</label>
+                    <input type="email" id="register-email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="seu@email.com" required>
+                </div>
+                <div class="mb-4">
+                    <label for="register-password" class="block text-gray-700 font-medium mb-2">Senha</label>
+                    <input type="password" id="register-password" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="••••••••" required>
+                </div>
+                <div class="mb-4">
+                    <label for="register-birthdate" class="block text-gray-700 font-medium mb-2">Data de Nascimento</label>
+                    <input type="date" id="register-birthdate" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">Gênero</label>
+                    <div class="flex space-x-4">
+                        <div class="flex items-center">
+                            <input type="radio" id="male" name="gender" value="male" class="h-4 w-4 text-green-500 focus:ring-green-500">
+                            <label for="male" class="ml-2 block text-sm text-gray-700">Masculino</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="female" name="gender" value="female" class="h-4 w-4 text-green-500 focus:ring-green-500">
+                            <label for="female" class="ml-2 block text-sm text-gray-700">Feminino</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg btn-orkut transition-all">
+                    Cadastrar
+                </button>
+                <div class="mt-4 text-center">
+                    <p class="text-sm text-gray-600">Já tem uma conta? <a href="login.html" class="text-blue-500 hover:underline">Faça login</a></p>
+                </div>
+            </form>
+        </div>
+    </template>
+    
+    <!-- Home Page Template -->
+    <template id="home-template">
+        <div>
+            <div class="bg-white rounded-lg shadow-md p-4 mb-6">
+                <div class="flex items-center space-x-3">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="w-10 h-10 rounded-full">
+                    <input type="text" placeholder="No que você está pensando?" class="flex-1 px-4 py-2 bg-gray-100 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div class="flex justify-between mt-3 border-t pt-3">
+                    <button class="flex items-center justify-center w-1/3 py-2 text-gray-500 hover:bg-gray-100 rounded-lg">
+                        <i class="fas fa-image text-blue-500 mr-2"></i> Foto
+                    </button>
+                    <button class="flex items-center justify-center w-1/3 py-2 text-gray-500 hover:bg-gray-100 rounded-lg">
+                        <i class="fas fa-user-tag text-pink-500 mr-2"></i> Marcar
+                    </button>
+                    <button class="flex items-center justify-center w-1/3 py-2 text-gray-500 hover:bg-gray-100 rounded-lg">
+                        <i class="fas fa-smile text-yellow-500 mr-2"></i> Emoji
+                    </button>
+                </div>
+            </div>
+            
+            <div class="space-y-6">
+                <!-- Post 1 -->
+                <div class="bg-white rounded-lg shadow-md p-4 post-card transition-all">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="User" class="w-10 h-10 rounded-full">
+                            <div>
+                                <h4 class="font-bold">Maria Oliveira</h4>
+                                <p class="text-gray-500 text-sm">2 horas atrás</p>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <p class="mb-4">Acabei de voltar de uma viagem incrível para a praia! O mar estava lindo e o sol brilhando. Recomendo muito esse destino para quem quer relaxar.</p>
+                    <img src="https://picsum.photos/seed/beach/800/400" alt="Post" class="w-full h-auto rounded-lg mb-3">
+                    <div class="flex justify-between items-center text-gray-500 border-t border-b py-2 mb-3">
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-thumbs-up text-blue-500"></i>
+                            <span>124</span>
+                        </div>
+                        <div>
+                            <span>23 comentários</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 flex items-center justify-center py-2 bg-gray-100 hover:bg-gray-200 rounded-lg">
+                            <i class="fas fa-thumbs-up mr-2"></i> Curtir
+                        </button>
+                        <button class="flex-1 flex items-center justify-center py-2 bg-gray-100 hover:bg-gray-200 rounded-lg">
+                            <i class="fas fa-comment mr-2"></i> Comentar
+                        </button>
+                        <button class="flex-1 flex items-center justify-center py-2 bg-gray-100 hover:bg-gray-200 rounded-lg">
+                            <i class="fas fa-share mr-2"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Post 2 -->
+                <div class="bg-white rounded-lg shadow-md p-4 post-card transition-all">
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center space-x-3">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="User" class="w-10 h-10 rounded-full">
+                            <div>
+                                <h4 class="font-bold">Carlos Mendes</h4>
+                                <p class="text-gray-500 text-sm">Ontem</p>
+                            </div>
+                        </div>
+                        <button class="text-gray-400 hover:text-gray-600">
+                            <i class="fas fa-ellipsis-h"></i>
+                        </button>
+                    </div>
+                    <p class="mb-4">Compartilhando esse artigo interessante sobre as novas tecnologias em desenvolvimento web. Vale a pena ler!</p>
+                    <div class="border rounded-lg p-3 mb-3 bg-gray-50">
+                        <h5 class="font-bold mb-1">As 10 tendências de desenvolvimento web para 2023</h5>
+                        <p class="text-sm text-gray-600 mb-2">Descubra as principais tecnologias que estão moldando o futuro da web neste ano.</p>
+                        <a href="#" class="text-blue-500 text-sm hover:underline">lerartigo.com/novas-tendencias</a>
+                    </div>
+                    <div class="flex justify-between items-center text-gray-500 border-t border-b py-2 mb-3">
+                        <div class="flex items-center space-x-1">
+                            <i class="fas fa-thumbs-up text-blue-500"></i>
+                            <span>89</span>
+                        </div>
+                        <div>
+                            <span>15 comentários</span>
+                        </div>
+                    </div>
+                    <div class="flex space-x-2">
+                        <button class="flex-1 flex items-center justify-center py-2 bg-gray-100 hover:bg-gray-200 rounded-lg">
+                            <i class="fas fa-thumbs-up mr-2"></i> Curtir
+                        </button>
+                        <button class="flex-1 flex items-center justify-center py-2 bg-gray-100 hover:bg-gray-200 rounded-lg">
+                            <i class="fas fa-comment mr-2"></i> Comentar
+                        </button>
+                        <button class="flex-1 flex items-center justify-center py-2 bg-gray-100 hover:bg-gray-200 rounded-lg">
+                            <i class="fas fa-share mr-2"></i> Compartilhar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Profile Template -->
+    <template id="profile-template">
+        <div>
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+                <div class="relative">
+                    <div class="h-48 bg-gradient-to-r from-blue-500 to-pink-500"></div>
+                    <div class="absolute -bottom-16 left-6">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Profile" class="profile-pic border-4 border-white">
+                    </div>
+                </div>
+                <div class="pt-20 px-6 pb-6">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-2xl font-bold">João Silva</h2>
+                            <p class="text-gray-600">São Paulo, SP</p>
+                        </div>
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg btn-orkut transition-all">
+                            <i class="fas fa-user-edit mr-2"></i> Editar Perfil
+                        </button>
+                    </div>
+                    <div class="flex space-x-6 mt-4">
+                        <div class="text-center">
+                            <p class="font-bold">245</p>
+                            <p class="text-gray-500 text-sm">Amigos</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-bold">12</p>
+                            <p class="text-gray-500 text-sm">Comunidades</p>
+                        </div>
+                        <div class="text-center">
+                            <p class="font-bold">56</p>
+                            <p class="text-gray-500 text-sm">Posts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-info-circle mr-2 text-blue-500"></i> Informações
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-gray-500">Data de Nascimento</p>
+                        <p class="font-medium">15/03/1990</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">Gênero</p>
+                        <p class="font-medium">Masculino</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">E-mail</p>
+                        <p class="font-medium">joao.silva@email.com</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-500">Profissão</p>
+                        <p class="font-medium">Desenvolvedor Web</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h3 class="text-xl font-bold mb-4 flex items-center">
+                    <i class="fas fa-pencil-alt mr-2 text-green-500"></i> Posts Recentes
+                </h3>
+                <div class="space-y-4">
+                    <div class="border rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
+                        <p class="mb-2">Acabei de publicar meu novo projeto no GitHub! É um sistema de gerenciamento de tarefas feito com React e Node.js.</p>
+                        <p class="text-sm text-gray-500">3 dias atrás</p>
+                    </div>
+                    <div class="border rounded-lg p-4 hover:bg-gray-50 cursor-pointer">
+                        <p class="mb-2">Participando do meetup de tecnologia hoje à noite. Alguém mais vai estar lá?</p>
+                        <p class="text-sm text-gray-500">1 semana atrás</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+    
+    <!-- Community Registration Template -->
+    <template id="community-template">
+        <div class="bg-white rounded-lg shadow-md p-8 max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center text-pink-500">
+                <i class="fas fa-users mr-2"></i> Criar Nova Comunidade
+            </h2>
+            <form>
+                <div class="mb-4">
+                    <label for="community-name" class="block text-gray-700 font-medium mb-2">Nome da Comunidade</label>
+                    <input type="text" id="community-name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Ex: Programadores JavaScript" required>
+                </div>
+                <div class="mb-4">
+                    <label for="community-description" class="block text-gray-700 font-medium mb-2">Descrição</label>
+                    <textarea id="community-description" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" placeholder="Descreva o propósito da sua comunidade..." required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label for="community-category" class="block text-gray-700 font-medium mb-2">Categoria</label>
+                    <select id="community-category" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500" required>
+                        <option value="">Selecione uma categoria</option>
+                        <option value="technology">Tecnologia</option>
+                        <option value="music">Música</option>
+                        <option value="travel">Viagens</option>
+                        <option value="sports">Esportes</option>
+                        <option value="education">Educação</option>
+                        <option value="other">Outro</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">Foto da Comunidade</label>
+                    <div class="flex items-center justify-center w-full">
+                        <label for="community-photo" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <i class="fas fa-cloud-upload-alt text-gray-400 text-3xl mb-2"></i>
+                                <p class="text-sm text-gray-500">Clique para enviar ou arraste uma imagem</p>
+                            </div>
+                            <input id="community-photo" type="file" class="hidden" accept="image/*">
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2">Tipo de Comunidade</label>
+                    <div class="flex space-x-4">
+                        <div class="flex items-center">
+                            <input type="radio" id="public" name="community-type" value="public" class="h-4 w-4 text-pink-500 focus:ring-pink-500" checked>
+                            <label for="public" class="ml-2 block text-sm text-gray-700">Pública (qualquer um pode entrar)</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="radio" id="private" name="community-type" value="private" class="h-4 w-4 text-pink-500 focus:ring-pink-500">
+                            <label for="private" class="ml-2 block text-sm text-gray-700">Privada (apenas com convite)</label>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-4 rounded-lg btn-orkut transition-all">
+                    <i class="fas fa-plus mr-2"></i> Criar Comunidade
+                </button>
+            </form>
+        </div>
+    </template>
+    
+    <!-- Post Registration Template -->
+    <template id="post-template">
+        <div class="bg-white rounded-lg shadow-md p-8 max-w-2xl mx-auto">
+            <h2 class="text-2xl font-bold mb-6 text-center text-green-500">
+                <i class="fas fa-edit mr-2"></i> Criar Novo Post
+            </h2>
+            <form>
+                <div class="mb-4">
+                    <label for="post-content" class="block text-gray-700 font-medium mb-2">Conteúdo</label>
+                    <textarea id="post-content" rows="6" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="No que você está pensando?" required></textarea>
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 font-medium mb-2">Adicionar Mídia</label>
+                    <div class="flex space-x-4">
+                        <button type="button" class="flex items-center justify-center px-4 py-2 border rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-image text-blue-500 mr-2"></i> Foto
+                        </button>
+                        <button type="button" class="flex items-center justify-center px-4 py-2 border rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-video text-red-500 mr-2"></i> Vídeo
+                        </button>
+                        <button type="button" class="flex items-center justify-center px-4 py-2 border rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-link text-purple-500 mr-2"></i> Link
+                        </button>
+                    </div>
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 font-medium mb-2">Visibilidade</label>
+                    <select class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
+                        <option value="public">Público (todos podem ver)</option>
+                        <option value="friends">Apenas amigos</option>
+                        <option value="private">Apenas eu</option>
+                    </select>
+                </div>
+                <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-3 px-4 rounded-lg btn-orkut transition-all">
+                    <i class="fas fa-paper-plane mr-2"></i> Publicar
+                </button>
+            </form>
+        </div>
+    </template>
+
+    <script>
+        // Simple router to handle page changes without actual navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Get the current "page" from URL hash
+            const hash = window.location.hash.substring(1) || 'home';
+            const mainContent = document.getElementById('main-content');
+            
+            // Hide sidebars on auth pages
+            if (hash === 'login' || hash === 'register') {
+                document.getElementById('left-sidebar').classList.add('hidden');
+                document.getElementById('right-sidebar').classList.add('hidden');
+            }
+            
+            // Load the appropriate template based on hash
+            switch(hash) {
+                case 'login':
+                    mainContent.innerHTML = document.getElementById('login-template').innerHTML;
+                    document.title = 'Conect24 - Login';
+                    break;
+                case 'register':
+                    mainContent.innerHTML = document.getElementById('register-template').innerHTML;
+                    document.title = 'Conect24 - Cadastro';
+                    break;
+                case 'home':
+                    mainContent.innerHTML = document.getElementById('home-template').innerHTML;
+                    document.title = 'Conect24 - Início';
+                    break;
+                case 'profile':
+                    mainContent.innerHTML = document.getElementById('profile-template').innerHTML;
+                    document.title = 'Conect24 - Perfil';
+                    break;
+                case 'community':
+                    mainContent.innerHTML = document.getElementById('community-template').innerHTML;
+                    document.title = 'Conect24 - Criar Comunidade';
+                    break;
+                case 'post':
+                    mainContent.innerHTML = document.getElementById('post-template').innerHTML;
+                    document.title = 'Conect24 - Criar Post';
+                    break;
+                default:
+                    mainContent.innerHTML = document.getElementById('home-template').innerHTML;
+                    document.title = 'Conect24 - Início';
+            }
+            
+            // Simulate navigation for demo purposes
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (this.getAttribute('href').startsWith('#')) {
+                        e.preventDefault();
+                        const page = this.getAttribute('href').substring(1);
+                        window.location.hash = page;
+                        location.reload();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

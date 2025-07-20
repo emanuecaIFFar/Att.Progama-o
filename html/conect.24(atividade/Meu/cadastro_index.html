@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cadastro</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .cadastro-container {
+      background-color: #fff;
+      padding: 2em;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+    input[type="email"], input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .error {
+      color: red;
+      font-size: 0.9em;
+    }
+    .login {
+      margin-top: 15px;
+    }
+    .login a {
+      text-decoration: none;
+      color: #28a745;
+    }
+    .login a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="cadastro-container">
+    <h2>Cadastro</h2>
+    <form id="cadastroForm">
+      <input type="email" id="email" placeholder="Email" required>
+      <input type="password" id="password" placeholder="Senha" required>
+      <input type="password" id="confirmPassword" placeholder="Confirmar Senha" required>
+      <p class="error" id="errorMsg"></p>
+      <button type="submit">Cadastrar</button>
+    </form>
+    <div class="login">
+      <p>Já tem uma conta? <a href="login.html">Voltar ao login</a></p>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('cadastroForm');
+    const errorMsg = document.getElementById('errorMsg');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const confirmPassword = document.getElementById('confirmPassword').value.trim();
+
+      const emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+
+      if (!emailRegex.test(email)) {
+        errorMsg.textContent = 'Insira um e-mail válido.';
+        return;
+      }
+
+      if (password.length < 6) {
+        errorMsg.textContent = 'A senha deve ter pelo menos 6 caracteres.';
+        return;
+      }
+
+      if (password !== confirmPassword) {
+        errorMsg.textContent = 'As senhas não coincidem.';
+        return;
+      }
+
+      // Redireciona se tudo estiver válido
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

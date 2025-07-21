@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conect 24 - Comunidades</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="logo">Conect<span> 24</span></div>
+    <div class="navbar">
+      <a href="index.html">início</a>
+      <a href="perfil.html">perfil</a>
+      <a href="perfil.html">scraps</a>
+      <a href="comunidades.html">comunidades</a>
+      <a href="login.html">sair</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="main-content">
+        <div class="widget-box">
+            <h3>Criar Nova Comunidade</h3>
+            <form class="create-community-form" id="form-create-community">
+                <label for="community-name"><b>Nome da Comunidade:</b></label>
+                <input type="text" id="community-name" placeholder="Ex: Eu Odeio Acordar Cedo" required>
+                
+                <label for="community-desc"><b>Descrição:</b></label>
+                <textarea id="community-desc" placeholder="Fale um pouco sobre a sua comunidade..."></textarea>
+                
+                <button type="submit">Criar Comunidade</button>
+            </form>
+        </div>
+
+        <div class="widget-box">
+            <h3>Explorar Comunidades</h3>
+            <div id="community-list">
+                <div class="community-item">
+                    <img src="https://via.placeholder.com/80/000/fff?text=Eu<3" alt="Ícone da Comunidade">
+                    <div class="community-info">
+                        <h4><a href="#">Eu Odeio Acordar Cedo</a></h4>
+                        <p>A comunidade para quem os 5 minutos a mais na cama são sagrados. 😴</p>
+                        <p><b>Membros:</b> 1.254.321</p>
+                    </div>
+                </div>
+                <div class="community-item">
+                    <img src="https://via.placeholder.com/80/c00/fff?text=Anos" alt="Ícone da Comunidade">
+                    <div class="community-info">
+                        <h4><a href="#">Eu Vi o Cometa Halley</a></h4>
+                        <p>Para os sortudos que presenciaram o evento de 1986.</p>
+                        <p><b>Membros:</b> 543.210</p>
+                    </div>
+                </div>
+                 <div class="community-item">
+                    <img src="https://via.placeholder.com/80/1657B1/fff?text=DEV" alt="Ícone da Comunidade">
+                    <div class="community-info">
+                        <h4><a href="#">Desenvolvedores Cansados</a></h4>
+                        <p>Um bug por dia, um café por hora. Aqui compartilhamos nossas dores.</p>
+                        <p><b>Membros:</b> 42.850</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feed de fotos de membros -->
+        <div class="community-feed">
+          <!-- Posts serão inseridos aqui -->
+        </div>
+    </div>
+
+    <div class="rightbar">
+      <div class="widget-box">
+        <h3>Amigos (24)</h3>
+        <div class="friends-grid">
+          <img src="https://via.placeholder.com/50/7C94E0/FFFFFF?text=A" class="friend-img">
+          <img src="https://via.placeholder.com/50/ED6498/FFFFFF?text=B" class="friend-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // --- SCRIPT PARA CRIAR COMUNIDADES DINAMICAMENTE ---
+    
+    // 1. Seleciona os elementos do formulário e a lista de comunidades
+    const communityForm = document.getElementById('form-create-community');
+    const communityNameInput = document.getElementById('community-name');
+    const communityDescInput = document.getElementById('community-desc');
+    const communityList = document.getElementById('community-list');
+
+    // 2. Adiciona um "escutador" para o evento de envio do formulário
+    communityForm.addEventListener('submit', function(event) {
+        // 3. Impede o comportamento padrão do formulário (que é recarregar a página)
+        event.preventDefault(); 
+
+        // 4. Pega os valores digitados pelo usuário
+        const name = communityNameInput.value.trim();
+        const description = communityDescInput.value.trim();
+
+        // 5. Verifica se o nome da comunidade não está vazio
+        if (name === '') {
+            alert('Por favor, digite um nome para a comunidade.');
+            return; // Para a execução se o nome estiver em branco
+        }
+
+        // 6. Cria o HTML para o novo item de comunidade usando os valores do formulário
+        const newCommunityHTML = `
+            <div class="community-item">
+                <img src="https://via.placeholder.com/80/666/fff?text=Nova" alt="Ícone da Comunidade">
+                <div class="community-info">
+                    <h4><a href="#">${name}</a></h4>
+                    <p>${description}</p>
+                    <p><b>Membros:</b> 1</p>
+                </div>
+            </div>
+        `;
+
+        // 7. Insere o novo HTML no início da lista de comunidades
+        communityList.insertAdjacentHTML('afterbegin', newCommunityHTML);
+
+        // 8. Limpa os campos do formulário para que o usuário possa criar outra comunidade
+        communityForm.reset();
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+      const feed = document.querySelector('.community-feed');
+      const posts = [
+        { name: 'Ana', img: 'https://source.unsplash.com/random/200x200?sig=1' },
+        { name: 'Bruno', img: 'https://source.unsplash.com/random/200x200?sig=2' },
+        { name: 'Carla', img: 'https://source.unsplash.com/random/200x200?sig=3' }
+      ];
+      posts.forEach(post => {
+        const div = document.createElement('div');
+        div.className = 'post-item';
+        div.innerHTML = `<strong>${post.name}</strong> postou:<br><img src="${post.img}" alt="Foto de ${post.name}" style="max-width:100%;border:1px solid #ccc;border-radius:4px;">`;
+        feed.appendChild(div);
+      });
+    });
+  </script>
+
+</body>
+</html>

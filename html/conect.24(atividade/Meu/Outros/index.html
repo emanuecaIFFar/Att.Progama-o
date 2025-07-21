@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conect 24 - Início (Estilo Orkut)</title>
+  <style>
+    /* Documentação do CSS - Estilo Orkut */
+
+    /* Configurações Gerais do Corpo da Página */
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background-color: #E6E9F0;
+      font-size: 12px;
+    }
+
+    /* Barra Superior (Topbar) */
+    .topbar {
+      background-color: #D6E1F4;
+      padding: 6px 10px;
+      color: #333;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #BFBFBF;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: #ED6498;
+      font-family: "Arial Black", Gadget, sans-serif;
+    }
+    .logo span { color: #7C94E0; }
+
+    .navbar a {
+      color: #1657B1;
+      margin: 0 10px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .navbar a:hover { text-decoration: underline; }
+
+    .container {
+      display: flex;
+      max-width: 980px;
+      margin: 15px auto;
+      gap: 15px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 200px;
+    }
+    .profile-box {
+      background: #FFF;
+      border: 1px solid #BFBFBF;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .profile-img {
+      width: 100px;
+      height: 100px;
+      border-radius: 8px;
+      border: 1px solid #CCC;
+      margin-bottom: 10px;
+    }
+    .sidebar-menu {
+      list-style: none;
+      padding: 0;
+      margin-top: 10px;
+    }
+    .sidebar-menu a {
+      display: block;
+      color: #1657B1;
+      text-decoration: none;
+      font-size: 12px;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .sidebar-menu a:hover { background: #F0F4FA; }
+    .sidebar p { font-size: 11px; color: #777; margin: 4px 0; }
+
+    /* Caixa de Postagem */
+    .postbox {
+      background: #F0F4FA;
+      padding: 12px;
+      border: 1px solid #BFBFBF;
+      border-radius: 8px;
+    }
+    .postbox textarea {
+      width: 100%; height: 50px;
+      border: 1px solid #CCC;
+      border-radius: 4px;
+      padding: 5px;
+      box-sizing: border-box;
+    }
+    .postbox button {
+      margin-top: 8px;
+      background: #7C94E0;
+      color: #FFF;
+      border: 1px solid #6075A9;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 4px;
+    }
+    .postbox button:hover { background: #6D84C7; }
+
+    /* Feed */
+    .feed { margin-top: 15px; }
+    .feed-item {
+      background: #FFF;
+      border: 1px solid #D9D9D9;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      font-size: 12px;
+    }
+    .feed-item strong { color: #1657B1; }
+
+    /* Rightbar */
+    .rightbar { width: 240px; }
+    .widget-box {
+      background: #FFF;
+      padding: 12px;
+      border: 1px solid #BFBFBF;
+      border-radius: 8px;
+      margin-bottom: 15px;
+    }
+    .widget-box h3 {
+      font-size: 14px;
+      color: #ED6498;
+      margin: 0 0 10px;
+      border-bottom: 1px solid #EAEAEA;
+      padding-bottom: 5px;
+    }
+    .friends-grid img { margin: 2px; width: 60px; height: 60px; object-fit: cover; }
+
+    /* Widget de Mensagens */
+    .widget-box-sidebar {
+      background: #FFF;
+      border: 1px solid #BFBFBF;
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+    }
+    .widget-box-sidebar:hover { background: #F0F4FA; }
+    .widget-box-sidebar h3 { margin:0 0 10px; }
+    .message-preview { display:flex; justify-content:space-between; font-size:11px; }
+    .badge {
+      background: #D83333;
+      color: #FFF;
+      padding: 2px 6px;
+      border-radius: 10px;
+      font-size: 10px;
+    }
+
+    /* Modal Chat */
+    .modal-overlay {
+      position: fixed; top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.6);
+      display:flex; justify-content:center; align-items:center;
+      z-index:1000;
+    }
+    .modal-content {
+      background:#E6E9F0;
+      border-radius:8px;
+      width:600px; height:500px;
+      box-shadow:0 5px 15px rgba(0,0,0,0.3);
+    }
+    .chat-container { display:flex; height:100%; }
+    .contact-list {
+      width:200px;
+      background:#FFF;
+      border-right:1px solid #BFBFBF;
+      border-radius:8px 0 0 8px;
+      display:flex; flex-direction:column;
+    }
+    .contact-list ul { list-style:none; padding:0; margin:0; overflow-y:auto; }
+    .contact-list li {
+      padding:12px; cursor:pointer;
+      border-bottom:1px solid #EAEAEA;
+      font-size:12px;
+    }
+    .contact-list li:hover { background:#F0F4FA; }
+    .contact-list li.active { background:#D6E1F4; font-weight:bold; }
+    .chat-window { flex:1; display:flex; flex-direction:column; }
+    .chat-header {
+      display:flex; justify-content:space-between;
+      align-items:center;
+      padding:10px;
+      background:#F0F4FA;
+      border-bottom:1px solid #BFBFBF;
+    }
+    .close-button { font-size:24px; cursor:pointer; font-weight:bold; color:#666; }
+    .chat-messages {
+      flex:1; padding:10px;
+      background:#FFF;
+      overflow-y:auto;
+    }
+    .chat-placeholder { color:#999; text-align:center; margin-top:20px; }
+    .chat-input-area {
+      display:flex; padding:10px; border-top:1px solid #BFBFBF;
+    }
+    .chat-input-area input {
+      flex:1; border:1px solid #CCC;
+      border-radius:4px; padding:8px;
+    }
+    .chat-input-area button {
+      background:#7C94E0; color:#FFF;
+      border:1px solid #6075A9;
+      padding:6px 12px; cursor:pointer;
+      font-weight:bold; border-radius:4px;
+      margin-left:5px;
+    }
+    .hidden { display:none !important; }
+    .chat-messages .message {
+      padding:8px 12px; border-radius:18px;
+      margin-bottom:8px; max-width:75%; line-height:1.4;
+    }
+    .chat-messages .message.contact {
+      background:#f1f0f0; float:left; clear:both;
+      border-bottom-left-radius:4px;
+    }
+    .chat-messages .message.user {
+      background:#dcf8c6; float:right; clear:both;
+      border-bottom-right-radius:4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="logo">Conect<span> 24</span></div>
+    <div class="navbar">
+      <a href="index.html">início</a>
+      <a href="perfil.html">perfil</a>
+      <a href="perfil.html">scraps</a>
+      <a href="comunidades.html">comunidades</a>
+      <a href="login.html">login</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="sidebar">
+      <div class="profile-box">
+        <img src="euvictor.jpg" class="profile-img" alt="Perfil">
+        <h2>Victor Borba</h2>
+        <p>Brasil</p>
+        <p>✅ Online</p>
+      </div>
+      <ul class="sidebar-menu">
+        <li><a href="perfil.html">▶ perfil</a></li>
+        <li><a href="perfil.html">✉ scraps</a></li>
+        <li><a href="comunidades.html">❤ depoimentos</a></li>
+        <li><a href="comunidades.html">👥 comunidades</a></li>
+      </ul>
+      <div class="widget-box-sidebar" id="open-messages-popup">
+        <h3>✉ Mensagens</h3>
+        <div class="message-preview">
+          <span>Você tem novas</span>
+          <span class="badge" id="message-badge">10</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <div class="postbox">
+        <label><b>O que você está pensando?</b></label>
+        <textarea placeholder="Escreva aqui..."></textarea>
+        <button>Postar</button>
+      </div>
+      <div class="feed">
+        <div class="feed-item"><strong>Sua sorte do dia:</strong> Acredite nos seus sonhos e eles se tornarão realidade. 🍀</div>
+        <div class="feed-item"><strong>Victor Borba</strong> adicionou novas fotos ao álbum <em>Férias na praia</em>.</div>
+        <div class="feed-item"><strong>Comunidade:</strong> Eu Odeio Acordar Cedo tem 3 novas postagens.</div>
+        <div class="feed-item"><strong>Nicolas</strong> agora é seu amigo.</div>
+      </div>
+    </div>
+
+    <div class="rightbar">
+      <div class="widget-box">
+        <h3>Amigos (24)</h3>
+        <div class="friends-grid">
+          <img src="https://thispersondoesnotexist.com/" class="friend-img" alt>
+          <img src="https://thispersondoesnotexist.com/" class="friend-img" alt>
+          <img src="https://thispersondoesnotexist.com/image" class="friend-img" alt>
+          <img src="https://thispersondoesnotexist.com/" class="friend-img" alt>
+          <img src="https://thispersondoesnotexist.com/" class="friend-img" alt>
+          <img src="https://thispersondoesnotexist.com/" class="friend-img" alt>
+          <img src="https://thispersondoesnotexist.com/" class="friend-img" alt>
+          <img src="https://thispersondoesnotexist.com/" class="friend-img" alt>
+        </div>
+      </div>
+      <div class="widget-box">
+        <h3>Comunidades (5)</h3>
+        <div class="friends-grid">
+          <img src="https://source.unsplash.com/random/800x600/?landscape" class="friend-img">
+          <img src="https://source.unsplash.com/random/800x600/?landscape" class="friend-img">
+          <img src="https://source.unsplash.com/random/800x600/?landscape" class="friend-img">
+          <img src="https://source.unsplash.com/random/800x600/?landscape" class="friend-img">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay hidden" id="messages-modal">
+    <div class="modal-content">
+      <div class="chat-container">
+        <div class="contact-list">
+          <div class="chat-header"><h4>Contatos</h4></div>
+          <ul id="chat-contacts"></ul>
+        </div>
+        <div class="chat-window">
+          <div class="chat-header">
+            <h4 id="chat-with-name">Selecione um contato</h4>
+            <span class="close-button" id="close-modal-button">&times;</span>
+          </div>
+          <div class="chat-messages" id="chat-messages-area">
+            <p class="chat-placeholder">Selecione um contato para ver as mensagens.</p>
+          </div>
+          <div class="chat-input-area">
+            <input type="text" id="chat-message-input" placeholder="Digite sua mensagem...">
+            <button id="send-message-btn">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Post dinâmico
+    const postButton = document.querySelector(".postbox button");
+    const postTextarea = document.querySelector(".postbox textarea");
+    const feed = document.querySelector(".feed");
+    postButton.addEventListener("click", () => {
+      const text = postTextarea.value.trim();
+      if (!text) return alert("Digite algo para postar.");
+      const newPost = document.createElement("div");
+      newPost.className = "feed-item";
+      newPost.innerHTML = `<strong>Você:</strong> ${text}`;
+      feed.prepend(newPost);
+      postTextarea.value = "";
+    });
+    // Posts falsos
+    const fakePosts = [
+      { sender: 'Fê', text: 'acabou de atualizar a foto de perfil!' },
+      { sender: 'Helena', text: 'criou a comunidade \'Fotografia Noturna\'' },
+      { sender: 'MaTheUs', text: 'comentou no seu álbum.' },
+      { sender: 'Cesar', text: 'adicionou 8 fotos novas.' },
+      { sender: 'Mayra', text: 'começou a seguir você.' }
+    ];
+    function addFakePost() {
+      const { sender, text } = fakePosts[Math.floor(Math.random()*fakePosts.length)];
+      const fake = document.createElement('div');
+      fake.className = 'feed-item';
+      fake.innerHTML = `<strong>${sender}:</strong> ${text}`;
+      feed.prepend(fake);
+    }
+    setInterval(addFakePost, 20000);
+
+    // Pop-up de Mensagens
+    const openButton = document.getElementById('open-messages-popup');
+    const closeButton = document.getElementById('close-modal-button');
+    const modal = document.getElementById('messages-modal');
+    const badge = document.getElementById('message-badge');
+    const chatContactList = document.getElementById('chat-contacts');
+    const chatWithName = document.getElementById('chat-with-name');
+    const chatMessagesArea = document.getElementById('chat-messages-area');
+    const sendButton = document.getElementById('send-message-btn');
+    const chatInput = document.getElementById('chat-message-input');
+
+    let messageCount = 10;
+    const conversations = [
+      { name: 'Titinho', messages: [{sender:'Titinho',text:'E aí, firmeza?'},{sender:'Você',text:'Tudo joia, e vc?'},{sender:'Titinho',text:'Tô bem! Viu aquele lançamento?'}] },
+      { name: 'Emanuel', messages: [{sender:'Emanuel',text:'Cara, preciso da sua ajuda no projeto.'}] },
+      { name: 'Thomas Lutez', messages: [{sender:'Thomas Lutez',text:'Reunião amanhã às 10h, não esquece.'},{sender:'Você',text:'Confirmado! Levo o relatório.'}] },
+      { name: 'Augusto Aguiar', messages: [{sender:'Augusto Aguiar',text:'Opa, tudo certo pra sexta?'}] },
+      { name: 'IFFar-FW', messages: [{sender:'IFFar-FW',text:'Lembrete: prazo se encerra hoje.'}] },
+      { name: 'Tinder', messages: [{sender:'Tinder',text:'Novo Match! Alguém perto de você está interessado.'}] },
+      { name: 'Boate Azul', messages: [{sender:'Boate Azul',text:'HOJE a noite promete! Lista VIP com 50% desconto.'}] },
+      { name: 'Rodrigo Faró', messages: [{sender:'Rodrigo Faró',text:'CAVALO! É isso mesmo, produção?'}] },
+      { name: 'xatepete', messages: [{sender:'xatepete',text:'Posso ajudar com um resumo hoje?'}] },
+      { name: 'Policia Federal', messages: [{sender:'Policia Federal',text:'Atividade suspeita detectada, confirme sua identidade.'},{sender:'Você',text:'O que aconteceu?'},{sender:'Policia Federal',text:'Clique no link: www.cilada.com'}] }
+    ];
+
+    function updateBadge() {
+      badge.textContent = messageCount;
+      if (messageCount <= 0) badge.classList.add('hidden');
+    }
+    function openModal() {
+      if(messageCount>0) messageCount--;
+      updateBadge();
+      modal.classList.remove('hidden');
+    }
+    function closeModal() { modal.classList.add('hidden'); }
+    function populateContacts() {
+      chatContactList.innerHTML = '';
+      conversations.forEach(c => {
+        const li = document.createElement('li');
+        li.textContent = c.name;
+        li.dataset.contact = c.name;
+        chatContactList.appendChild(li);
+      });
+    }
+    function renderConversation(name) {
+      const convo = conversations.find(c => c.name === name);
+      if (!convo) return;
+      chatMessagesArea.innerHTML = '';
+      convo.messages.forEach(m => {
+        const d = document.createElement('div');
+        d.className = 'message ' + (m.sender === 'Você' ? 'user' : 'contact');
+        d.textContent = m.text;
+        chatMessagesArea.appendChild(d);
+      });
+      chatMessagesArea.scrollTop = chatMessagesArea.scrollHeight;
+    }
+    // Enviar nova mensagem
+    sendButton.addEventListener('click', () => {
+      const txt = chatInput.value.trim();
+      if (!txt) return;
+      const el = document.createElement('div');
+      el.className = 'message user';
+      el.textContent = txt;
+      chatMessagesArea.appendChild(el);
+      chatMessagesArea.scrollTop = chatMessagesArea.scrollHeight;
+      chatInput.value = '';
+    });
+    chatInput.addEventListener('keypress', e => {
+      if (e.key === 'Enter') { sendButton.click(); e.preventDefault(); }
+    });
+
+    openButton.addEventListener('click', openModal);
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+    chatContactList.addEventListener('click', e => {
+      if (e.target.tagName === 'LI') {
+        renderConversation(e.target.dataset.contact);
+        chatWithName.textContent = `Chat com ${e.target.dataset.contact}`;
+        document.querySelectorAll('#chat-contacts li').forEach(li => li.classList.remove('active'));
+        e.target.classList.add('active');
+      }
+    });
+    populateContacts();
+    // Randomizar avatares de amigos
+    document.querySelectorAll('.rightbar .widget-box:nth-of-type(1) .friends-grid img').forEach(img => {
+      img.src = `https://thispersondoesnotexist.com/image?random=${Math.random()*1000|0}`;
+    });
+  </script>
+</body>
+</html>

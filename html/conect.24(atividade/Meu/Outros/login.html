@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Conect 24 - Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="aviso">
+  <strong>Aviso:</strong> Trabalho realizado por Victor Borba
+</div>
+
+<div class="container">
+  <div class="left">
+    <h1>Conect 24</h1>
+    <p><span>Conecte-se</span> aos seus amigos e familiares usando recados e mensagens instantâneas</p>
+    <p><span>Conheça</span> novas pessoas através de amigos de seus amigos e comunidades</p>
+    <p><span>Compartilhe</span> seus vídeos, fotos e paixões em um só lugar</p>
+  </div>
+  <div class="right">
+    <form onsubmit="return login()">
+      <label>E-mail:</label>
+      <input type="text" id="email" required>
+      <label>Senha:</label>
+      <input type="password" id="senha" required>
+      <div>
+        <input type="checkbox" id="salvar">
+        <label for="salvar">Salvar as minhas informações neste computador</label>
+      </div>
+      <button type="submit">Login</button>
+      <div class="links">
+        <p><a href="#">Não conseguiu acessar a sua conta?</a></p>
+        <p>Ainda não é membro? <a href="cadastro.html">ENTRAR JÁ</a></p>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="footer">
+  © 2025 Conect 24 - <a href="#">Sobre</a> - <a href="#">Segurança</a> - <a href="#">Privacidade</a> - <a href="#">Termos</a> - <a href="#">Contato</a>
+</div>
+
+<script>
+  function login() {
+    window.location.href = 'index.html';
+    return false; // evita envio real
+  }
+</script>
+
+</body>
+</html>

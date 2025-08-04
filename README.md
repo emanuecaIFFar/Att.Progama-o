@@ -37,6 +37,6 @@
 <div class="topic">
   <h2>5. Atualizações</h2>
   <p>
-    Sempre que tiver coisa nova, vou subir aqui 🚀. (gpt puro no REDME🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥)
+    Sempre que tiver coisa nova, vou subir aqui 🚀.
   </p>
 </div>

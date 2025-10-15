@@ -1,0 +1,68 @@
+/* Reset básico */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; font-family: Arial, Helvetica, sans-serif; }
+
+/* Layout centralizado */
+body {
+  min-height: 100%;
+  display: grid;
+  place-items: center;
+  background: #f1f5f9;
+  padding: 24px;
+}
+
+/* Cartão */
+.card {
+  width: 100%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+/* Título */
+.card h1 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  color: #111827;
+}
+
+/* Form */
+.form { display: grid; gap: 12px; }
+.label { display: grid; gap: 6px; color: #374151; font-size: .95rem; }
+
+.input {
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 1rem;
+  outline: none;
+}
+.input:focus { border-color: #60a5fa; box-shadow: 0 0 0 3px rgba(96,165,250,.25); }
+
+/* Botão */
+.btn {
+  margin-top: 8px;
+  background: #111827;
+  color: #fff;
+  border: 0;
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.btn:hover { filter: brightness(1.05); }
+
+/* Mensagem opcional (ex: erro via GET) */
+.msg {
+  margin-bottom: 12px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: .95rem;
+}
+.msg.erro { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.msg.ok   { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+
+/* Rodapé */
+.tip { margin-top: 12px; color: #6b7280; font-size: .9rem; }

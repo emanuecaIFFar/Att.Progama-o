@@ -31,6 +31,7 @@
     <li>🗂️ Abra as pastas por matéria ou tema.</li>
     <li>👀 Veja os códigos, entenda, copie se quiser.</li>
     <li>💡 Use como base pra estudar ou melhorar suas ideias.</li>
+    <li>🧷 Faça seu Pull Request!</li>
   </ul>
 </div>
 

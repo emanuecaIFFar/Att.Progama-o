@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projetos</title>
+
+  <!-- Font Awesome (ícones) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- CSS do projeto -->
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+  <div class="container">
+    <header class="hero-header">
+      <h1>&lt;/&gt; Projetos realizados na Instituição</h1>
+      <p>
+        Estudante de TI | Turma-T24 |
+        <a class="link-inline" href="emanuelzm_website.html">Voltar para tela inicial (ver)</a>
+      </p>
+    </header>
+
+    <main>
+      <section class="sec-projetos">
+        <h2>/ Projetos Escolares</h2>
+        <p>Participei de alguns projetos e trabalhos, muitos dos quais envolveram a aplicação de conhecimentos na área de TI.</p>
+        <ul class="lista-projetos">
+          <li>
+            <a href="https://estudarparaaiss.neocities.org" target="_blank" rel="noopener">
+              Fiz para estudar para AIS, achei que tinha sido uma boa ideia... até perceber que estudar era melhor 😂
+            </a>
+          </li>
+          <li>Tocar na Amostra Cultural</li>
+          <li>
+            <a href="https://linguaportuguesa.neocities.org/" target="_blank" rel="noopener">
+              Site que fiz para apresentar um conteúdo complementar para um banner
+            </a>
+          </li>
+          <li>Participei de alguns projetos da Hora do Código</li>
+          <li>
+            Participei de uma viagem para
+            <a href="https://virtual.unijui.edu.br/Portal/Eventos/interop/apresentacao" target="_blank" rel="noopener">interOP</a>
+            com a turma
+          </li>
+          <li>Realizamos um trabalho sobre moléculas, imprimindo-as na impressora 3D do Lab Maker do Instituto.</li>
+        </ul>
+
+        <figure class="fig-media">
+          <img src="gigachad.gif" alt="Joia" width="200" height="200" loading="lazy">
+          <figcaption>🗺️</figcaption>
+        </figure>
+      </section>
+
+      <section class="sec-contato" aria-labelledby="titulo-contato">
+        <h2 id="titulo-contato">Me envie uma mensagem!</h2>
+
+        <form id="formContato" action="#" method="post" novalidate>
+          <fieldset class="fieldset-card">
+            <legend>Meu contato</legend>
+
+            <div class="campo">
+              <label for="nome">Nome ou Apelido:</label>
+              <input type="text" id="nome" name="nome" placeholder="ex: Jeruncio" required>
+            </div>
+
+            <div class="campo">
+              <label for="email">Seu E-mail:</label>
+              <input type="email" id="email" name="email" placeholder="ex: jeruncio@email.com" required>
+            </div>
+
+            <div class="campo">
+              <label for="assunto">Assunto do contato:</label>
+              <input type="text" id="assunto" name="assunto" placeholder="Cobrar, dinheiro...">
+            </div>
+
+            <div class="campo">
+              <label for="mensagem">Sua mensagem:</label>
+              <textarea id="mensagem" name="mensagem" rows="3" placeholder="mensagem..." required></textarea>
+            </div>
+
+            <div class="campo">
+              <label for="dicas">Ideias para o site (opcional):</label>
+              <textarea id="dicas" name="dicas" rows="3" placeholder="Apenas se quiser"></textarea>
+            </div>
+
+            <div id="formMsg" class="form-msg" aria-live="polite"></div>
+
+            <button type="submit" class="btn btn-primary">Enviar agora</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <section class="sec-creditos">
+        <h3>/ Créditos</h3>
+        <p>Este site foi desenvolvido por <strong>Emanuel Ziegler Martins</strong>, estudante de TI na turma T24 do IFFar-FW.</p>
+        <p>Isso é parte de um <strong>trabalho prático</strong> de desenvolvimento web, utilizando HTML e CSS.</p>
+        <p>Referências simples de HTML, como links em imagens e textos,
+          foram consultadas no site <a href="https://www.w3schools.com/html/html_examples.asp" target="_blank" rel="noopener">W3Schools</a>.
+        </p>
+        <p>Os ícones utilizados no rodapé foram obtidos gratuitamente através do
+          <a href="https://fontawesome.com/search?o=r&ip=brands" target="_blank" rel="noopener">Font Awesome</a>, uma biblioteca incrível.
+          Decidi implementar no site para aprender a deixar ele mais bonito e funcional enquanto meto a mão no código.
+          <a href="https://www.youtube.com/watch?v=mtA__aN2UJA" target="_blank" rel="noopener">Obrigado</a>
+        </p>
+        <p>O assistente de IA <strong>ChatGPT</strong> foi utilizado para auxiliar na escrita de código,
+          organização do layout, inserção de ícones e ideias de estilo.</p>
+        <p>Tutoriais do <a href="https://youtu.be/HGTJBPNC-Gw?si=hTsJGHrLidsP28pe" target="_blank" rel="noopener">YouTube</a> me ajudaram a animar as fotos do site.</p>
+        <p>Obrigado pela compreensão!! 🔥🕹️</p>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Emanuel Ziegler Martins. Todos os direitos reservados.
+      <a class="link-inline" href="emanuelzm_website.html">(créditos)</a>
+    </p>
+
+    <div class="social-links">
+      <a href="https://www.instagram.com/emanuel_zzie" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://discord.com/users/699951335629389865" target="_blank" rel="noopener" aria-label="Discord">
+        <i class="fab fa-discord"></i>
+      </a>
+      <a href="https://github.com/emanueca" target="_blank" rel="noopener" aria-label="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://steamcommunity.com/id/emanueca/" target="_blank" rel="noopener" aria-label="Steam">
+        <i class="fab fa-steam"></i>
+      </a>
+      <a href="mailto:Emanuel.54079@aluno.iffar.edu.br" aria-label="E-mail">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </footer>
+
+  <!-- JS do projeto -->
+  <script src="script.js" defer></script>
+</body>
+</html>

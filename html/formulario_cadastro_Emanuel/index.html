@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Formulário Cadastro</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <form id="cadastroForm" action="#" method="post" novalidate>
+    <h2 class="titulo">Formulário Tape2</h2>
+
+    <label for="fname">Nome Completo</label>
+    <input type="text" id="fname" name="fname" required>
+
+    <label for="nasc">Data de nascimento</label>
+    <input type="date" id="nasc" name="nasc" required>
+
+    <label for="email">E-mail:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="celular">Seu número:</label>
+    <input
+      type="tel"
+      id="celular"
+      name="celular"
+      placeholder="(99) 99999-9999"
+      inputmode="tel"
+      pattern="^\(\d{2}\)\s?\d{4,5}-\d{4}$"
+      required
+    >
+
+    <fieldset class="grupo-campo">
+      <legend>Gênero</legend>
+      <div class="genero-opcoes">
+        <label><input type="radio" name="genero" value="masculino" required>Masculino</label>
+        <label><input type="radio" name="genero" value="feminino">Feminino</label>
+        <label><input type="radio" name="genero" value="prefiro">Prefiro não dizer</label>
+      </div>
+    </fieldset>
+
+    <h3 class="grupo-titulo">Endereço</h3>
+
+    <label for="pais">País:</label>
+    <input type="text" id="pais" name="pais" required>
+
+    <label for="logradouro">Rua/Avenida:</label>
+    <input type="text" id="logradouro" name="logradouro" required>
+
+    <label for="numero">Número:</label>
+    <input type="number" id="numero" name="numero" required>
+
+    <label for="bairro">Bairro:</label>
+    <input type="text" id="bairro" name="bairro" required>
+
+    <label for="cidade">Cidade:</label>
+    <input type="text" id="cidade" name="cidade" required>
+
+    <label for="cep">CEP:</label>
+    <input
+      type="text"
+      id="cep"
+      name="cep"
+      placeholder="99999-999"
+      inputmode="numeric"
+      pattern="^\d{5}-\d{3}$"
+      required
+    >
+
+    <label for="estado">Estado:</label>
+    <select id="estado" name="estado" required>
+      <option value="">Selecione...</option>
+      <option value="AC">Acre (AC)</option>
+      <option value="AL">Alagoas (AL)</option>
+      <option value="AP">Amapá (AP)</option>
+      <option value="AM">Amazonas (AM)</option>
+      <option value="BA">Bahia (BA)</option>
+      <option value="CE">Ceará (CE)</option>
+      <option value="DF">Distrito Federal (DF)</option>
+      <option value="ES">Espírito Santo (ES)</option>
+      <option value="GO">Goiás (GO)</option>
+      <option value="MA">Maranhão (MA)</option>
+      <option value="MT">Mato Grosso (MT)</option>
+      <option value="MS">Mato Grosso do Sul (MS)</option>
+      <option value="MG">Minas Gerais (MG)</option>
+      <option value="PA">Pará (PA)</option>
+      <option value="PB">Paraíba (PB)</option>
+      <option value="PR">Paraná (PR)</option>
+      <option value="PE">Pernambuco (PE)</option>
+      <option value="PI">Piauí (PI)</option>
+      <option value="RJ">Rio de Janeiro (RJ)</option>
+      <option value="RN">Rio Grande do Norte (RN)</option>
+      <option value="RS">Rio Grande do Sul (RS)</option>
+      <option value="RO">Rondônia (RO)</option>
+      <option value="RR">Roraima (RR)</option>
+      <option value="SC">Santa Catarina (SC)</option>
+      <option value="SP">São Paulo (SP)</option>
+      <option value="SE">Sergipe (SE)</option>
+      <option value="TO">Tocantins (TO)</option>
+    </select>
+
+    <label for="profissao">Área de interesse (ou profissão):</label>
+    <select id="profissao" name="profissao" required>
+      <option value="">Selecione uma opção</option>
+      <option value="ti">Tecnologia da Informação</option>
+      <option value="medicina">Medicina</option>
+      <option value="engenharia">Eng

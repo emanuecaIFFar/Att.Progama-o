@@ -1,0 +1,127 @@
+:root{
+  --borda:#000000;
+  --bg:#ffffff;
+  --txt:#000000;
+  --cinza:#cccccc;
+  --sombra:0 0 10px rgba(0,0,0,.1);
+}
+
+*{box-sizing:border-box}
+
+body{
+  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  color: var(--txt);
+  min-height: 100vh;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 16px;
+}
+
+form{
+  background-color: #ffffff;
+  border: 2px solid var(--borda);
+  border-radius: 10px;
+  padding: 20px 30px;
+  max-width: 640px;
+  width: 100%;
+  box-shadow: var(--sombra);
+}
+
+.titulo{
+  text-align:center;
+  margin:0 0 8px 0;
+}
+
+label{
+  display:block;
+  margin-top:10px;
+  font-weight:bold;
+}
+
+input, select, textarea{
+  width:100%;
+  padding:8px;
+  margin-top:5px;
+  margin-bottom:15px;
+  border:1px solid var(--cinza);
+  border-radius:4px;
+  font: inherit;
+}
+
+textarea{resize: vertical;}
+
+/* Grupo de gênero */
+.grupo-campo{
+  margin: 6px 0 10px 0;
+  border: 1px solid var(--cinza);
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.grupo-campo legend{
+  padding: 0 6px;
+  font-weight: bold;
+}
+
+.genero-opcoes{
+  display:flex;
+  gap:20px;
+  flex-wrap:wrap;
+  margin-top:5px;
+}
+
+.genero-opcoes label{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  font-weight: normal;
+  margin:0;
+}
+
+/* Título de seção */
+.grupo-titulo{
+  margin: 4px 0 6px 0;
+  font-size: 1.05rem;
+}
+
+/* Mensagem de formulário */
+.form-msg{
+  min-height: 20px;
+  margin: 6px 0 4px 0;
+  font-size: 0.95rem;
+}
+
+/* Botões */
+.botoes{
+  display:grid;
+  gap:10px;
+}
+
+.btn-submit,
+.btn-reset,
+input[type="submit"],
+input[type="reset"]{
+  padding:10px;
+  border:none;
+  border-radius:6px;
+  font-weight:bold;
+  color:#000;
+  background:#f1f1f1;
+  cursor:pointer;
+  width:100%;
+}
+
+.btn-submit:hover,
+.btn-reset:hover{
+  background:#e7e7e7;
+}
+
+/* Responsivo: lado a lado em telas maiores */
+@media (min-width: 540px){
+  .botoes{
+    grid-template-columns: 1fr 1fr;
+  }
+}

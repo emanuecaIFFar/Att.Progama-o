@@ -1,0 +1,174 @@
+/* Base */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow-x: hidden;
+  background-color: #000000; /* Fundo garante preto total */
+}
+
+/* App container */
+.iffed-app-container {
+  display: flex;              /* sidebar + conteúdo */
+  min-height: 100vh;
+  background-color: #000000;
+}
+
+/* Sidebar */
+.iffed-sidebar {
+  width: 80px;
+  background-color: #000000;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  border-right: 1px solid #262626;
+  z-index: 1030;
+}
+
+.iffed-sidebar .nav-pills {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.iffed-sidebar .nav-item {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.iffed-sidebar .nav-link {
+  color: #a8a8a8;
+  font-size: 1.75rem;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 0.5rem;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.iffed-sidebar .nav-link:hover {
+  background-color: #181818;
+  color: #ffffff;
+}
+
+.iffed-sidebar .nav-link.active {
+  color: #ffffff;
+  background-color: #202020;
+}
+
+/* Empurra o item "Menu" para o final */
+.iffed-sidebar .nav-item.iffed-menu-bottom {
+  margin-top: auto;
+}
+
+/* Main view */
+.iffed-main-view {
+  flex-grow: 1;
+  margin-left: 80px; /* espaço da sidebar fixa */
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+}
+
+/* Top bar */
+.iffed-top-bar {
+  background-color: #000000;
+  color: #ffffff;
+  height: 60px;
+  padding: 0 24px;
+  border-bottom: 1px solid #262626;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+}
+
+.iffed-top-bar .page-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.iffed-top-bar .btn-entrar {
+  font-size: 0.9rem;
+  padding: 0.3rem 1rem;
+  background-color: #efefef;
+  color: #000000;
+  border: none;
+}
+
+.iffed-top-bar .btn-entrar:hover {
+  background-color: #ffffff;
+}
+
+.iffed-top-bar .spacer {
+  min-width: 80px; /* compensa para centralizar o título */
+}
+
+/* Feed */
+.iffed-content-feed {
+  padding: 20px;
+  flex-grow: 1;
+  color: #e0e0e0;
+}
+
+/* Cards */
+.iffed-content-feed .card {
+  background-color: #1c1c1c;
+  border: 1px solid #363636;
+  color: #e0e0e0;
+}
+
+.iffed-content-feed .card .card-header {
+  background-color: #232323;
+  border-bottom: 1px solid #363636;
+  padding: 0.75rem 1rem;
+}
+
+.iffed-content-feed .card .card-title {
+  color: #e0e0e0;
+}
+
+.iffed-content-feed .card .card-img-top {
+  border-radius: 0;
+  margin-top: 0;
+}
+
+.iffed-content-feed .card .card-body {
+  padding: 1rem;
+}
+
+.iffed-content-feed .card .card-text {
+  color: #c0c0c0;
+}
+
+.iffed-content-feed .card .card-footer.post-actions {
+  background-color: #1c1c1c;
+  border-top: 1px solid #363636;
+  padding: 0.75rem 1rem;
+}
+
+.iffed-content-feed .post-actions i {
+  font-size: 1.35rem;
+  color: #a8a8a8;
+  margin-right: 18px;
+  cursor: default; /* não clicável por enquanto */
+}
+
+.iffed-content-feed .post-actions i:last-child {
+  margin-right: 0;
+}
